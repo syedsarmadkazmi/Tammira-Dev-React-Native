@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, FlatList, ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState, fetchBlogs, setBlogs } from '~app/store';
@@ -12,7 +12,7 @@ import { styles } from './styles';
 export const BlogScreen: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { allBlogs, blogs, loading, searchQuery, selectedTags } = useSelector((state: RootState) => state.blog);
-
+  const [refreshing, setRefreshing] = useState(false);
 
   console.log('blogs ', blogs);
 
@@ -42,6 +42,19 @@ export const BlogScreen: React.FC = () => {
     dispatch(fetchBlogs());
   }, [selectedTags]);
 
+
+  useEffect(() => {
+    dispatch(setBlogs(allBlogs));
+  }, [allBlogs]);
+
+  const onRefresh = () => {
+    setRefreshing(true);
+
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1000);
+  };
+
   return (
     <SafeAreaView style={styles.container} edges={['right', 'top', 'left']} >
       <View style={styles.header}>
@@ -56,6 +69,8 @@ export const BlogScreen: React.FC = () => {
             data={blogs}
             keyExtractor={(item: Blog) => item._id}
             renderItem={({ item }) => <BlogCard blog={item} />}
+            refreshing={refreshing}
+            onRefresh={onRefresh}
           />
         )}
       </View>

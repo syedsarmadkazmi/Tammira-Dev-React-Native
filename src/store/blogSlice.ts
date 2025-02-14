@@ -28,7 +28,7 @@ export const fetchBlogs = createAsyncThunk('blogs/fetchBlogs', async (_, { getSt
   const tagQuery = selectedTags.length > 0 ? `&tags=${selectedTags.join(',')}` : '';
   const searchParam = searchQuery ? `&search=${searchQuery}` : '';
 
-  const response = await axios.get(`http://localhost:3000/api/blogs?page=1&limit=5${tagQuery}${searchParam}`);
+  const response = await axios.get(`http://localhost:3000/api/blogs?page=1&limit=20${tagQuery}${searchParam}`);
   return response.data;
 });
 
