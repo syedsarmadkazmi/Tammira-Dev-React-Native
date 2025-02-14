@@ -24,6 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { TagsList } from '~app/collections';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -90,6 +91,7 @@ function App(): React.JSX.Element {
             Read the docs to discover what to do next:
           </Section>
           <LearnMoreLinks />
+          <TagsList />
         </View>
       </ScrollView>
     </SafeAreaView>
