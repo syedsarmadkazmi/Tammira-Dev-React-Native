@@ -1,6 +1,15 @@
 {
   "extends": "@react-native/typescript-config/tsconfig.json",
   "compilerOptions": {
+    "noImplicitAny": false,
+    "jsx": "react-native",
+    "target": "es5",
+    "lib": ["dom", "esnext"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
       "~app/screens": ["src/screens"],
