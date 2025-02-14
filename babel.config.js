@@ -22,6 +22,7 @@ module.exports = {
           '~app/collections': './src/collections',
           '~app/store': './src/store',
           '~app/services': './src/services',
+          '~app/types': './src/types',
         },
       },
     ],

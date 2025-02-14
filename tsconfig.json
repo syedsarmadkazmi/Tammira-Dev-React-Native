@@ -16,7 +16,8 @@
       "~app/components": ["src/components"],
       "~app/collections": ["src/collections"],
       "~app/services": ["src/services"],
-      "~app/store": ["src/store"]
+      "~app/store": ["src/store"],
+      "~app/types": ["src/types"]
     }
   },
   "exclude": [
